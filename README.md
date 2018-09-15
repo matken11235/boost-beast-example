@@ -1,6 +1,12 @@
 # beast-test
 **TODO: Add description**
 
+## Build
+
+```bash
+$ poac build # or run
+```
+
 ## Installation
 
 To install `beast-test`, add it to the dependency list of` poac.yml`:
