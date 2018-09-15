@@ -1,0 +1,32 @@
+name: beast-test
+version: 0.1.0
+cpp_version: 17
+owners:
+  - matken11235
+deps:
+  boostorg/boost:
+    src: github
+    tag: boost-1.67.0
+    build:
+      system: manual
+      steps:
+        - cd ${HOME}/.poac/cache/boost-1.67.0_tmp
+        - git submodule update --init --recursive
+        - ./bootstrap.sh
+        - ./b2 install -j2 --prefix=${HOME}/.poac/cache/boost-1.67.0
+    link:
+      type: static
+      include:
+        - boost_system
+        - boost_coroutine
+
+build:
+  system: poac
+  bin: true
+  compile_args:
+    - "-I/usr/local/opt/libressl/include"
+    - "-DBOOST_COROUTINES_NO_DEPRECATION_WARNING"
+  link_args:
+    - "-L/usr/local/opt/libressl/lib"
+    - "-lssl"
+    - "-lcrypto"
