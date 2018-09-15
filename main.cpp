@@ -128,20 +128,20 @@ int main(int argc, char* argv[])
     auto ios = std::make_shared<boost::asio::io_service>();
     boost::asio::spawn(*ios, [=](auto yield) mutable {
         auto ec = boost::system::error_code{};
-        auto host = "poac-test.herokuapp.com";
+        auto host = "google.com";
         // 10 -> HTTP/1.0, 11 -> HTTP/1.1
-        auto req = http::request<http::string_body>{ http::verb::get, "/search?q=poac", 11 };
-//        {
-//            auto ret = httpRequest(ios, host, req, yield[ec]);
-//            if (auto res_ptr = boost::get<http::response<http::string_body>>(&ret))
-//            {
-//                std::cout << *res_ptr << std::endl;
-//            }
-//            else if (auto err_ptr = boost::get<std::string>(&ret))
-//            {
-//                std::cout << *err_ptr << std::endl;
-//            }
-//        }
+        auto req = http::request<http::string_body>{ http::verb::get, "/", 11 };
+        {
+            auto ret = httpRequest(ios, host, req, yield[ec]);
+            if (auto res_ptr = boost::get<http::response<http::string_body>>(&ret))
+            {
+                std::cout << *res_ptr << std::endl;
+            }
+            else if (auto err_ptr = boost::get<std::string>(&ret))
+            {
+                std::cout << *err_ptr << std::endl;
+            }
+        }
         {
             auto ret = httpsRequest(ios, host, req, yield[ec]);
             if (auto res_ptr = boost::get<http::response<http::string_body>>(&ret))
