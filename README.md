@@ -1,6 +1,14 @@
 # beast-test
 **TODO: Add description**
 
+---
+This project uses [poac](https://github.com/poacpm/poac).
+
+For more information on A please see below:
+* https://poac.pm
+* https://github.com/poacpm
+* https://github.com/poacpm/poac#readme
+
 ## Build
 
 ```bash
